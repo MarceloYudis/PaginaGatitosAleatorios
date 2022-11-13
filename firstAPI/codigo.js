@@ -13,3 +13,20 @@ fetch(API)
     imagen.src = IMGAgatito;
 })
 }
+
+
+async function traerGatitos(apiURL) {
+    const respuesta = await fetch(apiURL);
+    const data = await respuesta.json();
+
+    return data[0].url;
+}
+
+const mostrarGatitos = async(apiURL) => {
+    try {
+        const gatetes = await traerGatitos(`${apiURL}`);
+         
+    } catch (error) {
+
+    }
+}
