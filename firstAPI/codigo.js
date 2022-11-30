@@ -1,6 +1,6 @@
 document.write("lol")
 const API = "https://api.thecatapi.com/v1/images/search?limit=3&api_key=live_ehGicg6RazPr5LRt68uOav3QHOvJcsqWQb6vjIgfQG80ZZb5Z0Aog8vh2PBKtRr5"
-const favorites_API = "ttps://api.thecatapi.com/v1/favourites?limit=3api_key=live_ehGicg6RazPr5LRt68uOav3QHOvJcsqWQb6vjIgfQG80ZZb5Z0Aog8vh2PBKtRr5";
+const favorites_API = "https://api.thecatapi.com/v1/favourites?limit=3&api_key=live_ehGicg6RazPr5LRt68uOav3QHOvJcsqWQb6vjIgfQG80ZZb5Z0Aog8vh2PBKtRr5";   
 
 const botonsito = document.getElementById("BOTOM");
 const spanError = document.getElementById("error");
@@ -37,6 +37,19 @@ async function favoritosGatitos() {
      }else{}
 }
 
+async function guardarFavoritosGatitos() {
+    const rest = await fetch(favorites_API, {
+        method: 'POST',
+        header: {
+            'Content-Type':'application/json',
+
+        },
+        body: JSON.stringify({
+            image_id: 12
+        })
+    })
+    console.log(rest);
+}
 
 botonsito.addEventListener("click",traerGatitos(API));
 
