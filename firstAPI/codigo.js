@@ -40,12 +40,12 @@ async function favoritosGatitos() {
 async function guardarFavoritosGatitos() {
     const rest = await fetch(favorites_API, {
         method: 'POST',
-        header: {
+        headers: {
             'Content-Type':'application/json',
 
         },
         body: JSON.stringify({
-            image_id: 12
+            image_id: "n7"
         })
     })
     console.log(rest);
