@@ -23,6 +23,15 @@ async function traerGatitos(apiURL) {
         imagen1.src = gatetes1;
         const imagen2 = await document.getElementById('img2');
         imagen2.src = gatetes2;
+
+        data.forEach(michi => {
+            michi.image.url;
+            const article = document.createElement('article');
+            const img = document.createElement('img');
+            const buttonAdd = document.createElement('button');
+            const binText = document.createTextNode('Sacar michi')
+
+        })
     }
 }
 
