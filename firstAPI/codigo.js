@@ -1,6 +1,6 @@
-document.write("lol")
-const API = "https://api.thecatapi.com/v1/images/search?limit=3&api_key=live_ehGicg6RazPr5LRt68uOav3QHOvJcsqWQb6vjIgfQG80ZZb5Z0Aog8vh2PBKtRr5"
-const favorites_API = "https://api.thecatapi.com/v1/favourites?limit=3&api_key=live_ehGicg6RazPr5LRt68uOav3QHOvJcsqWQb6vjIgfQG80ZZb5Z0Aog8vh2PBKtRr5";   
+
+const API = "https://api.thecatapi.com/v1/images/search?limit=3&api_key=live_ehGicg6RazPr5LRt68uOav3QHOvJcsqWQb6vjIgfQG80ZZb5Z0Aog8vh2PBKtRr5";
+const favorites_API = "https://api.thecatapi.com/v1/favourites?api_key=live_ehGicg6RazPr5LRt68uOav3QHOvJcsqWQb6vjIgfQG80ZZb5Z0Aog8vh2PBKtRr5";   
 
 const botonsito = document.getElementById("BOTOM");
 const spanError = document.getElementById("error");
@@ -8,6 +8,9 @@ const spanError = document.getElementById("error");
 async function traerGatitos(apiURL) {
     const respuesta = await fetch(API);
     const data = await respuesta.json();
+
+    const respuestaFAV = await fetch(favorites_API);
+    const dataFAV = await respuestaFAV.json();
 
    const gatetes0 = await data[0].url;
    const gatetes1 = await data[1].url;
@@ -24,14 +27,35 @@ async function traerGatitos(apiURL) {
         const imagen2 = await document.getElementById('img2');
         imagen2.src = gatetes2;
 
-        data.forEach(michi => {
-            michi.image.url;
+        const botonprimero = await document.getElementById('botonprimero');
+        const botonsegundo = await document.getElementById('botonsegundo');
+        const botontercero = await document.getElementById('botontercero');
+
+        botonprimero.onclick = guardarFavoritosGatitos(data[0].id)
+        botonsegundo.onclick = guardarFavoritosGatitos(data[1].id)
+        botontercero.onclick = guardarFavoritosGatitos(data[2].id)
+
+        console.log(dataFAV)
+        dataFAV.forEach(michi => {
+           
+            const section = document.getElementById('favorites')
             const article = document.createElement('article');
             const img = document.createElement('img');
             const buttonAdd = document.createElement('button');
             const binText = document.createTextNode('Sacar michi')
+            
+            console.log(michi.image.url)
+            buttonAdd.appendChild(binText);
+            img.src = michi.image.url; 
 
+            article.appendChild(img);
+            article.appendChild(buttonAdd);
+
+            section.appendChild(article)
         })
+
+       
+
     }
 }
 
@@ -46,7 +70,7 @@ async function favoritosGatitos() {
      }else{}
 }
 
-async function guardarFavoritosGatitos() {
+async function guardarFavoritosGatitos(id) {
     const rest = await fetch(favorites_API, {
         method: 'POST',
         headers: {
@@ -54,7 +78,7 @@ async function guardarFavoritosGatitos() {
 
         },
         body: JSON.stringify({
-            image_id: "n7"
+            image_id: id
         })
     })
     console.log(rest);
