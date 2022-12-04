@@ -2,6 +2,8 @@
 const API = "https://api.thecatapi.com/v1/images/search?limit=3&api_key=live_ehGicg6RazPr5LRt68uOav3QHOvJcsqWQb6vjIgfQG80ZZb5Z0Aog8vh2PBKtRr5";
 const favorites_API = "https://api.thecatapi.com/v1/favourites?api_key=live_ehGicg6RazPr5LRt68uOav3QHOvJcsqWQb6vjIgfQG80ZZb5Z0Aog8vh2PBKtRr5";   
 
+
+
 const botonsito = document.getElementById("BOTOM");
 const spanError = document.getElementById("error");
 
@@ -43,9 +45,11 @@ async function traerGatitos(apiURL) {
             const img = document.createElement('img');
             const buttonAdd = document.createElement('button');
             const binText = document.createTextNode('Sacar michi')
-            
+        
+
             console.log(michi.image.url)
-            buttonAdd.appendChild(binText);
+           buttonAdd.appendChild(binText);
+            buttonAdd.onclick = () => borrarGatitos(michi.image_id)
             img.src = michi.image.url; 
 
             article.appendChild(img);
@@ -84,6 +88,17 @@ async function guardarFavoritosGatitos(id) {
     console.log(rest);
 }
 
+async function borrarGatitos(id) {
+    const deleteFavorites = `https://api.thecatapi.com/v1/favourites/${id}?api_key=live_ehGicg6RazPr5LRt68uOav3QHOvJcsqWQb6vjIgfQG80ZZb5Z0Aog8vh2PBKtRr5`;
+
+    const rest = await fetch(deleteFavorites, {method: 'DELETE'})
+
+    if(rest.status !==200) {
+        spanError.innerHTML = "Hubo un error" + rest.status;
+     }else{
+        console.log("michi borrado")
+     }
+}
 botonsito.addEventListener("click",traerGatitos(API));
 
 // function invocarGatitos() {
