@@ -37,10 +37,18 @@ async function traerGatitos(apiURL) {
         botonsegundo.onclick = guardarFavoritosGatitos(data[1].id)
         botontercero.onclick = guardarFavoritosGatitos(data[2].id)
 
-        console.log(dataFAV)
+        console.log(dataFAV);
+        
+        const section = document.getElementById('favorites')
+        section.innerHTML = "";
+        const tituloMichi = document.createElement('h2');
+        const tituloMichiTexto =  document.createTextNode('Michis favoritos')
+        tituloMichi.appendChild(tituloMichiTexto);
+        section.appendChild(tituloMichi)
+
         dataFAV.forEach(michi => {
            
-            const section = document.getElementById('favorites')
+            
             const article = document.createElement('article');
             const img = document.createElement('img');
             const buttonAdd = document.createElement('button');
@@ -49,7 +57,8 @@ async function traerGatitos(apiURL) {
 
             console.log(michi.image.url)
            buttonAdd.appendChild(binText);
-            buttonAdd.onclick = () => borrarGatitos(michi.image_id)
+            buttonAdd.onclick = () => borrarGatitos(michi.id);
+            
             img.src = michi.image.url; 
 
             article.appendChild(img);
@@ -85,7 +94,19 @@ async function guardarFavoritosGatitos(id) {
             image_id: id
         })
     })
-    console.log(rest);
+
+    const data = await rest.json()
+
+
+    console.log("SAVE");
+    console.log(rest)
+    if(rest.status !==200) {
+        spanError.innerHTML = "Hubo un error" + rest.status + data.messages;
+     }else{
+        console.log("michi guradado en favoritos")
+        favoritosGatitos()
+     }
+    
 }
 
 async function borrarGatitos(id) {
@@ -94,9 +115,10 @@ async function borrarGatitos(id) {
     const rest = await fetch(deleteFavorites, {method: 'DELETE'})
 
     if(rest.status !==200) {
-        spanError.innerHTML = "Hubo un error" + rest.status;
+        spanError.innerHTML = "Hubo un error" + res.status;
      }else{
         console.log("michi borrado")
+        favoritosGatitos()
      }
 }
 botonsito.addEventListener("click",traerGatitos(API));
