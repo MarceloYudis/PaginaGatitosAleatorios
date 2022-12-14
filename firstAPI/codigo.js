@@ -36,6 +36,7 @@ async function traerGatitos(apiURL) {
         botontercero.onclick = guardarFavoritosGatitos(data[2].id)
 
         console.log(dataFAV)
+        /*
         dataFAV.forEach(michi => {
            
             const section = document.getElementById('favorites')
@@ -52,7 +53,8 @@ async function traerGatitos(apiURL) {
             article.appendChild(buttonAdd);
 
             section.appendChild(article)
-        })
+        }) */
+
 
        
 
