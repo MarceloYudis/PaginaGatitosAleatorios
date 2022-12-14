@@ -86,6 +86,21 @@ async function guardarFavoritosGatitos(id) {
     console.log(rest);
 }
 
+async function borrarGatos(id) {
+    const res = await fetch(favorites_API(id), {
+        method: 'DELETE',
+        headers: {
+            'Content-Tpe':'application/jason',
+        },
+        body: JSON.stringify({
+            image_id: "d8t"
+        })
+    })
+
+    const datos = await res.json()
+
+}
+
 botonsito.addEventListener("click",traerGatitos(API));
 
 // function invocarGatitos() {
