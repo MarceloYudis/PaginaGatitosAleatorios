@@ -9,7 +9,9 @@ async function traerGatitos(apiURL) {
     const data = await respuesta.json();
 
 
+    const aidys = await data[0];
 
+    console.log("AIDYS",aidys)
 
    const gatetes0 = await data[0].url;
    const gatetes1 = await data[1].url;
@@ -35,10 +37,10 @@ async function traerGatitos(apiURL) {
         botonsegundo.onclick = guardarFavoritosGatitos(data[1].id)
         botontercero.onclick = guardarFavoritosGatitos(data[2].id)
 */
-       botonprimero.addEventListener("click", guardarFavoritosGatitos(data[0].id));
+       /* botonprimero.addEventListener("click", guardarFavoritosGatitos(data[0].id));
         botonsegundo.addEventListener("click", guardarFavoritosGatitos(data[1].id));
         botontercero.addEventListener("click", guardarFavoritosGatitos(data[2].id));
-
+*/ 
         
         /*
         dataFAV.forEach(michi => {
@@ -67,49 +69,50 @@ async function traerGatitos(apiURL) {
 }
 
 async function favoritosGatitos() {
-    const respuesta = await fetch(favorites_API);
+    const respuesta = await fetch(favorites_API, {
+        headers: {'content-type':'application/json',
+        "x-api-key":"live_49av3KtjwvLIIrxkImZnNg0hk5ReJK57Qj9Bo8i5fhQzVHALmCG3AxVXhnNiICev"}
+    });
+
     const data = await respuesta.json();
 
-    const favGatito = await data[0].url;
+    const favGatito = await data;
 
     if(respuesta.status !==200) {
         spanError.innerHTML = "Hubo un error" + respuesta.status;
      }else{
+        console.log("DATA",data)
         console.log(data.message)
      }
 }
 
-async function guardarFavoritosGatitos(id) {
+async function guardarFavoritosGatitos() {
 
-    const ID = "d8t";
+    const ID = "100107462";
 
-    const rest = await fetch("https://api.thecatapi.com/v1/favourites", {
+    const respt = await fetch("https://api.thecatapi.com/v1/favourites", {
         method: 'POST',
-        headers: {
-            'Content-Type':'application/json',
-            'x-api-key':'live_49av3KtjwvLIIrxkImZnNg0hk5ReJK57Qj9Bo8i5fhQzVHALmCG3AxVXhnNiICev'
-        },
+        headers: {'x-api-key':'live_49av3KtjwvLIIrxkImZnNg0hk5ReJK57Qj9Bo8i5fhQzVHALmCG3AxVXhnNiICev'},
         body: JSON.stringify({
-            image_id: ID
+            'image_id': '100107462'
         })
     })
-    const datax = rest.json() 
+    const datax = respt.json() 
     
-    console.log("GUARDADO",datax.message)
-    if(rest.status !==200) {
-        
+
+    if(respt.status !==200) {
+        console.log(datax.message)
     }
 }
 
 async function borrarGatos(id) {
-    const res = await fetch(favorites_API(id), {
+    const res = await fetch(`https://api.thecatapi.com/v1/favourites/${id}`, {
         method: 'DELETE',
         headers: {
-            'Content-Tpe':'application/jason',
+            'Content-Type':'application/jason',
+            'x-api-key': 'live_49av3KtjwvLIIrxkImZnNg0hk5ReJK57Qj9Bo8i5fhQzVHALmCG3AxVXhnNiICev'
         },
-        body: JSON.stringify({
-            image_id: "d8t"
-        })
+        
     })
 
     const datos = await res.json()
@@ -118,6 +121,8 @@ async function borrarGatos(id) {
 
 botonsito.addEventListener("click",traerGatitos(API));
 guardarFavoritosGatitos()
+
+favoritosGatitos()
 // function invocarGatitos() {
 // fetch(API)
 // .then(response => response.json())
