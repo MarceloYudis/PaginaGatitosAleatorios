@@ -92,9 +92,10 @@ async function guardarFavoritosGatitos() {
 
     const respt = await fetch("https://api.thecatapi.com/v1/favourites", {
         method: 'POST',
-        headers: {'x-api-key':'live_49av3KtjwvLIIrxkImZnNg0hk5ReJK57Qj9Bo8i5fhQzVHALmCG3AxVXhnNiICev'},
+        headers:{'x-api-key':'live_49av3KtjwvLIIrxkImZnNg0hk5ReJK57Qj9Bo8i5fhQzVHALmCG3AxVXhnNiICev',
+        'content-type':'application/json'},
         body: JSON.stringify({
-            'image_id': '100107462'
+            "image_id":ID
         })
     })
     const datax = respt.json() 
@@ -120,7 +121,7 @@ async function borrarGatos(id) {
 }
 
 botonsito.addEventListener("click",traerGatitos(API));
-guardarFavoritosGatitos()
+
 
 favoritosGatitos()
 // function invocarGatitos() {
