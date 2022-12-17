@@ -5,6 +5,8 @@ const botonsito = document.getElementById("BOTOM");
 const spanError = document.getElementById("error");
 
 let dataRANDOM;
+
+
 async function traerGatitos(apiURL) {
     const respuesta = await fetch(API);
     const data = await respuesta.json();
@@ -33,11 +35,9 @@ async function traerGatitos(apiURL) {
         const botonsegundo = await document.getElementById('botonsegundo');
         const botontercero = await document.getElementById('botontercero');
 
-        const eventoDOS = await botonsegundo.addEventListener("onclick",botonGUARDO(data[1].id))
-        /*botonprimero.onclick = guardarFavoritosGatitos(data[0].id)
-        botonsegundo.onclick = guardarFavoritosGatitos(data[1].id)
-        botontercero.onclick = guardarFavoritosGatitos(data[2].id)
-*/
+        botonsegundo.onclick = () => {guardarFavoritosGatitos(data[1].id)}
+        //botontercero.onclick = guardarFavoritosGatitos(data[2].id)
+
        /* botonprimero.addEventListener("click", guardarFavoritosGatitos(data[0].id));
         botonsegundo.addEventListener("click", guardarFavoritosGatitos(data[1].id));
         botontercero.addEventListener("click", guardarFavoritosGatitos(data[2].id));
@@ -62,7 +62,7 @@ async function traerGatitos(apiURL) {
             console.log(michi.image.url)
             buttonAdd.appendChild(binText);
             img.src = michi.image.url; 
-
+            img.width = 300;
             article.appendChild(img);
             article.appendChild(buttonAdd);
 
