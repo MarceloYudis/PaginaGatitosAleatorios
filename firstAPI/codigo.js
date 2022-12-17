@@ -107,16 +107,47 @@ async function guardarFavoritosGatitos() {
 }
 
 async function borrarGatos(id) {
+    //console.log(id)
     const res = await fetch(`https://api.thecatapi.com/v1/favourites/${id}`, {
         method: 'DELETE',
         headers: {
-            'Content-Type':'application/jason',
+            'content-type':'application/jason',
             'x-api-key': 'live_49av3KtjwvLIIrxkImZnNg0hk5ReJK57Qj9Bo8i5fhQzVHALmCG3AxVXhnNiICev'
         },
         
     })
 
     const datos = await res.json()
+    if(res.status !==200) {
+        console.log("error " + res.status)
+     }else{
+        console.log("DATA",datos)
+        console.log(datos.message)
+     }
+
+
+}
+
+async function thanosGatitos() {
+    const respt = await fetch(favorites_API, {
+        headers: {'content-type':'application/json',
+        "x-api-key":"live_49av3KtjwvLIIrxkImZnNg0hk5ReJK57Qj9Bo8i5fhQzVHALmCG3AxVXhnNiICev"}
+    });
+
+    const dataFAV = await respt.json();
+
+    console.log("DATA ",dataFAV)
+
+    dataFAV.forEach( michito => {
+        if(michito.id != "100111878" | michito.id != "100112064") {
+            borrarGatos(michito.id)
+        }
+        //console.log(michito.id)
+      
+    })
+    const postDATA = await dataFAV
+    console.log("DATA AFTER FOR EACH" + postDATA.length)
+
 
 }
 
@@ -124,6 +155,7 @@ botonsito.addEventListener("click",traerGatitos(API));
 
 
 favoritosGatitos()
+
 // function invocarGatitos() {
 // fetch(API)
 // .then(response => response.json())
