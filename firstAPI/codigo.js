@@ -4,10 +4,11 @@ const favorites_API = "https://api.thecatapi.com/v1/favourites";
 const botonsito = document.getElementById("BOTOM");
 const spanError = document.getElementById("error");
 
+let dataRANDOM;
 async function traerGatitos(apiURL) {
     const respuesta = await fetch(API);
     const data = await respuesta.json();
-
+    dataRANDOM = await data;
 
     const aidys = await data[0];
 
@@ -75,7 +76,7 @@ async function favoritosGatitos() {
     });
 
     const data = await respuesta.json();
-
+   
     const favGatito = await data;
 
     if(respuesta.status !==200) {
@@ -84,11 +85,26 @@ async function favoritosGatitos() {
         console.log("DATA",data)
         console.log(data.message)
      }
+
+     //traer etq html al codigo.js
+     const botonprimero = document.getElementById("botonprimero");
+     //botonprimero.addEventListener("onclick", botonGUARDO)
 }
 
-async function guardarFavoritosGatitos() {
+function botonGUARDO() {
+    console.log("MICHI PRIMERO GUARDADO");
+    console.log(dataRANDOM)
+    const data_random = dataRANDOM;
 
-    const ID = "100107462";
+    const gato = data_random[0].id;
+    console.log(gato)
+
+    guardarFavoritosGatitos(gato)
+}
+
+async function guardarFavoritosGatitos(ID) {
+
+    console.log("GUARDAR FAV => ID = " + ID)
 
     const respt = await fetch("https://api.thecatapi.com/v1/favourites", {
         method: 'POST',
@@ -103,6 +119,8 @@ async function guardarFavoritosGatitos() {
 
     if(respt.status !==200) {
         console.log(datax.message)
+    } else {
+        console.log("DATAX EN FAV => "+datax)
     }
 }
 
