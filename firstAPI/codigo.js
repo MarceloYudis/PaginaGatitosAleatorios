@@ -33,7 +33,7 @@ async function traerGatitos(apiURL) {
         const botonsegundo = await document.getElementById('botonsegundo');
         const botontercero = await document.getElementById('botontercero');
 
-
+        const eventoDOS = await botonsegundo.addEventListener("onclick",botonGUARDO(data[1].id))
         /*botonprimero.onclick = guardarFavoritosGatitos(data[0].id)
         botonsegundo.onclick = guardarFavoritosGatitos(data[1].id)
         botontercero.onclick = guardarFavoritosGatitos(data[2].id)
@@ -43,10 +43,17 @@ async function traerGatitos(apiURL) {
         botontercero.addEventListener("click", guardarFavoritosGatitos(data[2].id));
 */ 
         
-        /*
+        const respuesta = await fetch(favorites_API, {
+            headers: {'content-type':'application/json',
+            "x-api-key":"live_49av3KtjwvLIIrxkImZnNg0hk5ReJK57Qj9Bo8i5fhQzVHALmCG3AxVXhnNiICev"}
+        });
+
+        const dataFAV = await respuesta.json();   
+        
         dataFAV.forEach(michi => {
            
-            const section = document.getElementById('favorites')
+            const section = document.getElementById('favorites');
+
             const article = document.createElement('article');
             const img = document.createElement('img');
             const buttonAdd = document.createElement('button');
@@ -60,7 +67,7 @@ async function traerGatitos(apiURL) {
             article.appendChild(buttonAdd);
 
             section.appendChild(article)
-        }) */
+        }) 
 
 
        
@@ -91,12 +98,12 @@ async function favoritosGatitos() {
      //botonprimero.addEventListener("onclick", botonGUARDO)
 }
 
-function botonGUARDO() {
-    console.log("MICHI PRIMERO GUARDADO");
+function botonGUARDO(iD) {
+    console.log("MICHI GUARDADO");
     console.log(dataRANDOM)
     const data_random = dataRANDOM;
 
-    const gato = data_random[0].id;
+    const gato = iD;
     console.log(gato)
 
     guardarFavoritosGatitos(gato)
@@ -157,6 +164,7 @@ async function thanosGatitos() {
     console.log("DATA ",dataFAV)
 
     dataFAV.forEach( michito => {
+
         if(michito.id != "100111878" | michito.id != "100112064") {
             borrarGatos(michito.id)
         }
@@ -173,6 +181,7 @@ botonsito.addEventListener("click",traerGatitos(API));
 
 
 favoritosGatitos()
+
 
 // function invocarGatitos() {
 // fetch(API)
