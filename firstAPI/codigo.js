@@ -35,7 +35,9 @@ async function traerGatitos(apiURL) {
         const botonsegundo = await document.getElementById('botonsegundo');
         const botontercero = await document.getElementById('botontercero');
 
+        botonprimero.onclick = () => {guardarFavoritosGatitos(data[0].id)}
         botonsegundo.onclick = () => {guardarFavoritosGatitos(data[1].id)}
+        botontercero.onclick = () => {guardarFavoritosGatitos(data[2].id)}
         //botontercero.onclick = guardarFavoritosGatitos(data[2].id)
 
        /* botonprimero.addEventListener("click", guardarFavoritosGatitos(data[0].id));
