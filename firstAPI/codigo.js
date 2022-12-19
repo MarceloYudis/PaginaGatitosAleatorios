@@ -79,7 +79,8 @@ async function favoritosGatitos() {
     if(respuesta.status !==200) {
         spanError.innerHTML = "Hubo un error" + respuesta.status;
      }else{
-        const Section = document.getElementById("favorites");
+        /* 
+             const Section = document.getElementById("favorites");
         Section.innerHTML = "";
 
         console.log("DATA",dataFAV)
@@ -91,11 +92,12 @@ async function favoritosGatitos() {
 
         
         h2.appendChild(h2Text);
-        Section.appendChild(h2);
+        Section.appendChild(h2);*/
         
 
         //const dataFAV = await respuesta.json();   
         
+        actualizarGatos()
         dataFAV.forEach(michi => {
            
             
@@ -133,6 +135,21 @@ function botonGUARDO(iD) {
     console.log(gato)
 
     guardarFavoritosGatitos(gato)
+}
+
+async function actualizarGatos() {
+
+    const Section = document.getElementById("favorites");
+    Section.innerHTML = "";
+
+
+    const h2 = document.createElement('h2');
+    const h2Text = document.createTextNode('Gatos Favoritos');
+    //const Section = document.getElementById("favorites");
+
+    
+    h2.appendChild(h2Text);
+    Section.appendChild(h2);
 }
 
 async function guardarFavoritosGatitos(ID) {
@@ -175,7 +192,7 @@ async function borrarGatos(id) {
      }else{
         console.log("DATA",datos)
         console.log(datos.message)
-
+        favoritosGatitos()
      }
 
 
