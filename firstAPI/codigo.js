@@ -31,6 +31,19 @@ async function traerGatitos(apiURL) {
         const imagen2 = await document.getElementById('img2');
         imagen2.src = gatetes2;
 
+
+        /* 
+                const h2 = document.createElement('h2');
+        const h2Text = document.createTextNode('Gatos aleatorios');
+        const Section = document.getElementById("allcontent");
+
+        
+        h2.appendChild(h2Text);
+        Section.appendChild(h2)
+        Section.innerHTML = "";
+*/
+
+
         const botonprimero = await document.getElementById('botonprimero');
         const botonsegundo = await document.getElementById('botonsegundo');
         const botontercero = await document.getElementById('botontercero');
@@ -38,24 +51,45 @@ async function traerGatitos(apiURL) {
         botonprimero.onclick = () => {guardarFavoritosGatitos(data[0].id)}
         botonsegundo.onclick = () => {guardarFavoritosGatitos(data[1].id)}
         botontercero.onclick = () => {guardarFavoritosGatitos(data[2].id)}
-        //botontercero.onclick = guardarFavoritosGatitos(data[2].id)
 
-       /* botonprimero.addEventListener("click", guardarFavoritosGatitos(data[0].id));
-        botonsegundo.addEventListener("click", guardarFavoritosGatitos(data[1].id));
-        botontercero.addEventListener("click", guardarFavoritosGatitos(data[2].id));
-*/ 
         
         const respuesta = await fetch(favorites_API, {
             headers: {'content-type':'application/json',
             "x-api-key":"live_49av3KtjwvLIIrxkImZnNg0hk5ReJK57Qj9Bo8i5fhQzVHALmCG3AxVXhnNiICev"}
         });
 
-        const dataFAV = await respuesta.json();   
+
+
+       favoritosGatitos()
+
+    }
+    console.log("AAAAAAAAAAAH"+respuesta.status)
+}
+
+async function favoritosGatitos() {
+    const respuesta = await fetch(favorites_API, {
+        headers: {'content-type':'application/json',
+        "x-api-key":"live_49av3KtjwvLIIrxkImZnNg0hk5ReJK57Qj9Bo8i5fhQzVHALmCG3AxVXhnNiICev"}
+    });
+
+    const dataFAV = await respuesta.json();
+   
+
+
+    if(respuesta.status !==200) {
+        spanError.innerHTML = "Hubo un error" + respuesta.status;
+     }else{
+        console.log("DATA",dataFAV)
+        console.log(dataFAV.message)
+
+        
+
+        //const dataFAV = await respuesta.json();   
         
         dataFAV.forEach(michi => {
            
+            
             const section = document.getElementById('favorites');
-
             const article = document.createElement('article');
             const img = document.createElement('img');
             const buttonAdd = document.createElement('button');
@@ -71,33 +105,11 @@ async function traerGatitos(apiURL) {
             section.appendChild(article)
         }) 
 
-
-       
-
-    }
-    console.log("AAAAAAAAAAAH"+respuesta.status)
-}
-
-async function favoritosGatitos() {
-    const respuesta = await fetch(favorites_API, {
-        headers: {'content-type':'application/json',
-        "x-api-key":"live_49av3KtjwvLIIrxkImZnNg0hk5ReJK57Qj9Bo8i5fhQzVHALmCG3AxVXhnNiICev"}
-    });
-
-    const data = await respuesta.json();
-   
-    const favGatito = await data;
-
-    if(respuesta.status !==200) {
-        spanError.innerHTML = "Hubo un error" + respuesta.status;
-     }else{
-        console.log("DATA",data)
-        console.log(data.message)
      }
 
      //traer etq html al codigo.js
      const botonprimero = document.getElementById("botonprimero");
-     //botonprimero.addEventListener("onclick", botonGUARDO)
+
 }
 
 function botonGUARDO(iD) {
@@ -130,6 +142,7 @@ async function guardarFavoritosGatitos(ID) {
         console.log(datax.message)
     } else {
         console.log("DATAX EN FAV => "+datax)
+        
     }
 }
 
@@ -182,16 +195,6 @@ async function thanosGatitos() {
 botonsito.addEventListener("click",traerGatitos(API));
 
 
-favoritosGatitos()
 
 
-// function invocarGatitos() {
-// fetch(API)
-// .then(response => response.json())
-// .then(data => {
-//     const IMGAgatito = data[0].url;
-//     const imagen = document.querySelector('img');
-//     imagen.src = IMGAgatito;
-// })
-// }
 
