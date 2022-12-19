@@ -23,21 +23,22 @@
 <body>
     <header></header>
     <main>
-        <section>
+        <section id="allcontent">
+            <h2>Michis favoritos</h2>
             <span id="error"></span>
-            <button id="BOTOM" onClick="traerGatitos()">Refresh Page</button> </br>
+            <button id="BOTOM" onclick="traerGatitos()">Refresh Page</button> </br>
 
             <article>
-                <img id="img0" alt="">
-                <button id="botonprimero" onclick="guardarFavoritosGatitos()">Guardar michi</button>
+                <img  width="400"id="img0" alt="">
+                <button id="botonprimero" >Guardar michi</button>
             </article>
             <article>
-                <img id="img1" alt="">
-                <button id="botonsegundo" onclick="guardarFavoritosGatitos()">Guardar michi</button>
+                <img width="400" id="img1" alt="">
+                <button id="botonsegundo" type="button" >Guardar michi</button>
             </article>
             <article>
-                <img id="img2" alt="">
-                <button id="botontercero" onclick="guardarFavoritosGatitos()">Guardar michi</button>
+                <img width="400" id="img2" alt="">
+                <button id="botontercero" >Guardar michi</button>
             </article>
 
         </section>
@@ -46,7 +47,9 @@
         <section id="favorites">
             <h2>FAVORITOSS</h2>
             <img id="" alt="">
-            <button id="buttonDelete" ">Sacar michi</button>
+
+            <button onclick="borrarGatos()">Sacar michi</button>
+
         </section>
     </main>
     <script src="./codigo.js"></script>
