@@ -79,9 +79,19 @@ async function favoritosGatitos() {
     if(respuesta.status !==200) {
         spanError.innerHTML = "Hubo un error" + respuesta.status;
      }else{
+        const Section = document.getElementById("favorites");
+        Section.innerHTML = "";
+
         console.log("DATA",dataFAV)
         console.log(dataFAV.message)
 
+        const h2 = document.createElement('h2');
+        const h2Text = document.createTextNode('Gatos Favoritos');
+        //const Section = document.getElementById("favorites");
+
+        
+        h2.appendChild(h2Text);
+        Section.appendChild(h2);
         
 
         //const dataFAV = await respuesta.json();   
@@ -97,6 +107,8 @@ async function favoritosGatitos() {
             
             console.log(michi.image.url)
             buttonAdd.appendChild(binText);
+            buttonAdd.onclick = () => {borrarGatos(michi.id);}
+
             img.src = michi.image.url; 
             img.width = 300;
             article.appendChild(img);
@@ -142,7 +154,7 @@ async function guardarFavoritosGatitos(ID) {
         console.log(datax.message)
     } else {
         console.log("DATAX EN FAV => "+datax)
-        
+        favoritosGatitos()
     }
 }
 
@@ -163,6 +175,7 @@ async function borrarGatos(id) {
      }else{
         console.log("DATA",datos)
         console.log(datos.message)
+
      }
 
 
@@ -189,6 +202,7 @@ async function thanosGatitos() {
     const postDATA = await dataFAV
     console.log("DATA AFTER FOR EACH" + postDATA.length)
 
+    favoritosGatitos()
 
 }
 
