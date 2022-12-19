@@ -1,6 +1,8 @@
 const API = "https://api.thecatapi.com/v1/images/search?limit=3&api_key=live_ehGicg6RazPr5LRt68uOav3QHOvJcsqWQb6vjIgfQG80ZZb5Z0Aog8vh2PBKtRr5";
 const favorites_API = "https://api.thecatapi.com/v1/favourites";  
 
+
+
 const botonsito = document.getElementById("BOTOM");
 const spanError = document.getElementById("error");
 
@@ -35,6 +37,7 @@ async function traerGatitos(apiURL) {
         const botonsegundo = await document.getElementById('botonsegundo');
         const botontercero = await document.getElementById('botontercero');
 
+
         botonprimero.onclick = () => {guardarFavoritosGatitos(data[0].id)}
         botonsegundo.onclick = () => {guardarFavoritosGatitos(data[1].id)}
         botontercero.onclick = () => {guardarFavoritosGatitos(data[2].id)}
@@ -56,13 +59,34 @@ async function traerGatitos(apiURL) {
            
             const section = document.getElementById('favorites');
 
+=======
+        botonprimero.onclick = guardarFavoritosGatitos(data[0].id)
+        botonsegundo.onclick = guardarFavoritosGatitos(data[1].id)
+        botontercero.onclick = guardarFavoritosGatitos(data[2].id)
+
+        console.log(dataFAV);
+        
+        const section = document.getElementById('favorites')
+        section.innerHTML = "";
+        const tituloMichi = document.createElement('h2');
+        const tituloMichiTexto =  document.createTextNode('Michis favoritos')
+        tituloMichi.appendChild(tituloMichiTexto);
+        section.appendChild(tituloMichi)
+
+        dataFAV.forEach(michi => {
+           
+            
+
             const article = document.createElement('article');
             const img = document.createElement('img');
             const buttonAdd = document.createElement('button');
             const binText = document.createTextNode('Sacar michi')
-            
+        
+
             console.log(michi.image.url)
-            buttonAdd.appendChild(binText);
+           buttonAdd.appendChild(binText);
+            buttonAdd.onclick = () => borrarGatitos(michi.id);
+            
             img.src = michi.image.url; 
             img.width = 300;
             article.appendChild(img);
@@ -123,6 +147,7 @@ async function guardarFavoritosGatitos(ID) {
             "image_id":ID
         })
     })
+
     const datax = respt.json() 
     
 
@@ -177,8 +202,34 @@ async function thanosGatitos() {
     console.log("DATA AFTER FOR EACH" + postDATA.length)
 
 
+=======
+
+    const data = await rest.json()
+
+
+    console.log("SAVE");
+    console.log(rest)
+    if(rest.status !==200) {
+        spanError.innerHTML = "Hubo un error" + rest.status + data.messages;
+     }else{
+        console.log("michi guradado en favoritos")
+        favoritosGatitos()
+     }
+    
 }
 
+async function borrarGatitos(id) {
+    const deleteFavorites = `https://api.thecatapi.com/v1/favourites/${id}?api_key=live_ehGicg6RazPr5LRt68uOav3QHOvJcsqWQb6vjIgfQG80ZZb5Z0Aog8vh2PBKtRr5`;
+
+    const rest = await fetch(deleteFavorites, {method: 'DELETE'})
+
+    if(rest.status !==200) {
+        spanError.innerHTML = "Hubo un error" + res.status;
+     }else{
+        console.log("michi borrado")
+        favoritosGatitos()
+     }
+}
 botonsito.addEventListener("click",traerGatitos(API));
 
 
