@@ -52,15 +52,19 @@ async function traerGatitos(apiURL) {
 
         const dataFAV = await respuesta.json();   
         
+        const sectionFather = document.createElement('section');
+        sectionFather.setAttribute('class', "sectionFather")
+
         dataFAV.forEach(michi => {
            
-            const section = document.getElementById('favorites');
+            ;
 
             const article = document.createElement('article');
             const img = document.createElement('img');
             const buttonAdd = document.createElement('button');
             const binText = document.createTextNode('Sacar michi')
             
+            article.setAttribute('class', "containerMichisFav")
             console.log(michi.image.url)
             buttonAdd.appendChild(binText);
             img.src = michi.image.url; 
@@ -68,9 +72,11 @@ async function traerGatitos(apiURL) {
             article.appendChild(img);
             article.appendChild(buttonAdd);
 
-            section.appendChild(article)
+            sectionFather.appendChild(article)
+            
         }) 
-
+        const section = document.getElementById('favorites');
+        section.appendChild(sectionFather)
 
        
 
