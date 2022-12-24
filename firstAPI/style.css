@@ -5,8 +5,13 @@
 main {
     background-color: aqua;
 }
-
+.encabezado {
+    display: flex;
+    justify-content: center ;
+}
 h2 {
+    
+
     font-size: 36px;
     color: violet;
     font-family: enter;
@@ -23,5 +28,9 @@ h2 {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
+    justify-content: space-around;
+}
+.fatherButtonRefresh {
+    display: flex;
     justify-content: center;
 }

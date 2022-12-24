@@ -13,10 +13,12 @@
     <header></header>
     <main>
         <section  id="allcontent">
-            <h2>Michis favoritos</h2>
+            <section class="encabezado">
+                <h2 class="titulo">Michis favoritos</h2>
             <span id="error"></span>
-            <button id="BOTOM" onclick="traerGatitos()">Refresh Page</button> </br>
+             </br>
 
+            </section>
             <section class="michisContent">
                 <article class="cajasdeGatosRandom">
                     <img  width="200"id="img0" alt="">
@@ -32,11 +34,14 @@
                 </article>
     
             </section>
+            <div class="fatherButtonRefresh">
+                <button id="BOTOM" onclick="traerGatitos()">Refresh Page</button>
+            </div>
         </section>
 
 
         <section id="favorites">
-            <h2>FAVORITOSS</h2>
+            <h2 class="tituloRandom">FAVORITOSS</h2>
             <img id="" alt="">
             <button onclick="borrarGatos()">Sacar michi</button>
         </section>
