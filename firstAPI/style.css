@@ -1,0 +1,27 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+main {
+    background-color: aqua;
+}
+
+h2 {
+    font-size: 36px;
+    color: violet;
+    font-family: enter;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.cajasdeGatosRandom {
+    background-color: red;
+    width: 200px;
+    height: auto;
+
+    border: 5px black solid;
+}
+.michisContent {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+}
