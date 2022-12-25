@@ -119,28 +119,6 @@ async function favoritosGatitos() {
     console.log("AAAAAAAAAAAH"+respuesta.status)
 }
 
-async function favoritosGatitos() {
-    const respuesta = await fetch(favorites_API, {
-        headers: {'content-type':'application/json',
-        "x-api-key":"live_49av3KtjwvLIIrxkImZnNg0hk5ReJK57Qj9Bo8i5fhQzVHALmCG3AxVXhnNiICev"}
-    });
-
-    const data = await respuesta.json();
-   
-    const favGatito = await data;
-
-    if(respuesta.status !==200) {
-        spanError.innerHTML = "Hubo un error" + respuesta.status;
-     }else{
-        console.log("DATA",data)
-        console.log(data.message)
-     }
-
-     //traer etq html al codigo.js
-     const botonprimero = document.getElementById("botonprimero");
-
-}
-
 
 function botonGUARDO(iD) {
     console.log("MICHI GUARDADO");
