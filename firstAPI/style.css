@@ -1,0 +1,60 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+main {
+    background-color:white;
+}
+.encabezado {
+    display: flex;
+    justify-content: center ;
+}
+h2 {
+    
+
+    font-size: 36px;
+    color:black;
+    
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.cajasdeGatosRandom {
+    
+    width: 200px;
+    height: auto;
+    
+    
+}
+img {
+    border-radius: 30px;
+}
+.michisContent {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-around;
+}
+.fatherButtonRefresh {
+    display: flex;
+    justify-content: center;
+    margin-top: 22px;
+    margin-bottom: 32px;
+}
+
+.sectionFather{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.containerMichisFav {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 30px;
+    
+}
+.containerMichisFav button {
+    margin-top: 15px;
+}
+.encabezadoRandom {
+    justify-content: center;
+    display: flex;
+}
