@@ -74,8 +74,7 @@ async function favoritosGatitos() {
     if(respuesta.status !==200) {
         spanError.innerHTML = "Hubo un error" + respuesta.status;
      }else{
-        /* 
-             const Section = document.getElementById("favorites");
+          const Section = document.getElementById("favorites");
         Section.innerHTML = "";
 
         console.log("DATA",dataFAV)
@@ -86,17 +85,13 @@ async function favoritosGatitos() {
         //const Section = document.getElementById("favorites");
 
         
-        h2.appendChild(h2Text);
-        Section.appendChild(h2);*/
-        
+        const sectionFather = document.createElement('section');
+        sectionFather.setAttribute('class', "sectionFather")
 
-        //const dataFAV = await respuesta.json();   
-        
-        actualizarGatos()
         dataFAV.forEach(michi => {
            
-            
-            const section = document.getElementById('favorites');
+            ;
+
             const article = document.createElement('article');
             const img = document.createElement('img');
             const buttonAdd = document.createElement('button');
