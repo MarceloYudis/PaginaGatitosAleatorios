@@ -54,7 +54,7 @@ async function traerGatitos(apiURL) {
         botonsegundo.onclick = () => {guardarFavoritosGatitos(data[1].id)}
         botontercero.onclick = () => {guardarFavoritosGatitos(data[2].id)}
 
-        console.log(dataFAV);
+        
         
         const section = document.getElementById('favorites')
         section.innerHTML = "";
@@ -62,6 +62,8 @@ async function traerGatitos(apiURL) {
         const tituloMichiTexto =  document.createTextNode('Michis favoritos')
         tituloMichi.appendChild(tituloMichiTexto);
         section.appendChild(tituloMichi)
+
+        const resptFAV = 
 
         dataFAV.forEach(michi => {
            
@@ -198,18 +200,6 @@ async function thanosGatitos() {
     
 }
 
-async function borrarGatitos(id) {
-    const deleteFavorites = `https://api.thecatapi.com/v1/favourites/${id}?api_key=live_ehGicg6RazPr5LRt68uOav3QHOvJcsqWQb6vjIgfQG80ZZb5Z0Aog8vh2PBKtRr5`;
-
-    const rest = await fetch(deleteFavorites, {method: 'DELETE'})
-
-    if(rest.status !==200) {
-        spanError.innerHTML = "Hubo un error" + res.status;
-     }else{
-        console.log("michi borrado")
-        favoritosGatitos()
-     }
-}
 botonsito.addEventListener("click",traerGatitos(API));
 
 
