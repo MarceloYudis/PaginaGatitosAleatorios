@@ -6,29 +6,46 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="vieport" content="width=device-width, initial-scale=1.0">
     <title>API DE GATITOS</title>
+    <link rel="stylesheet" href="./style.css">
 
 </head>
 <body>
     <header></header>
     <main>
-        <section id="allcontent">
-            <h2>Michis favoritos</h2>
+        <section  id="allcontent">
+            <section class="encabezado">
+                <h2 class="titulo">Michitos</h2>
             <span id="error"></span>
-            <button id="BOTOM" onclick="traerGatitos()">Refresh Page</button> </br>
+             </br>
 
-            <article>
-                <img  width="400"id="img0" alt="">
-                <button id="botonprimero" >Guardar michi</button>
-            </article>
-            <article>
-                <img width="400" id="img1" alt="">
-                <button id="botonsegundo" type="button" >Guardar michi</button>
-            </article>
-            <article>
-                <img width="400" id="img2" alt="">
-                <button id="botontercero" >Guardar michi</button>
-            </article>
-
+            </section>
+            <section class="michisContent">
+                <div>
+                    <article class="cajasdeGatosRandom">
+                        <img  width="200"id="img0" alt="">
+                        
+                    </article>
+                    <button id="botonprimero" >Guardar michi</button>
+                </div>
+                <div>
+                    <article class="cajasdeGatosRandom">
+                        <img width="200" id="img1" alt="">
+                        
+                    </article>
+                    <button id="botonsegundo" type="button" >Guardar michi</button>
+                </div>
+                <div>
+                    <article class="cajasdeGatosRandom">
+                        <img width="200" id="img2" alt="">
+                        
+                    </article>
+                    <button id="botontercero" >Guardar michi</button>
+                </div>
+    
+            </section>
+            <div class="fatherButtonRefresh">
+                <button id="BOTOM" onclick="traerGatitos()">Refresh Page</button>
+            </div>
         </section>
 
 
