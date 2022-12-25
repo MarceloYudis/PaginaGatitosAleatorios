@@ -55,30 +55,56 @@ async function traerGatitos(apiURL) {
         botontercero.onclick = () => {guardarFavoritosGatitos(data[2].id)}
 
         
+        favoritosGatitos()
+
+}
+}
+
+
+async function favoritosGatitos() {
+    const respuesta = await fetch(favorites_API, {
+        headers: {'content-type':'application/json',
+        "x-api-key":"live_49av3KtjwvLIIrxkImZnNg0hk5ReJK57Qj9Bo8i5fhQzVHALmCG3AxVXhnNiICev"}
+    });
+
+    const dataFAV = await respuesta.json();
+   
+
+
+    if(respuesta.status !==200) {
+        spanError.innerHTML = "Hubo un error" + respuesta.status;
+     }else{
+        /* 
+             const Section = document.getElementById("favorites");
+        Section.innerHTML = "";
+
+        console.log("DATA",dataFAV)
+        console.log(dataFAV.message)
+
+        const h2 = document.createElement('h2');
+        const h2Text = document.createTextNode('Gatos Favoritos');
+        //const Section = document.getElementById("favorites");
+
         
-        const section = document.getElementById('favorites')
-        section.innerHTML = "";
-        const tituloMichi = document.createElement('h2');
-        const tituloMichiTexto =  document.createTextNode('Michis favoritos')
-        tituloMichi.appendChild(tituloMichiTexto);
-        section.appendChild(tituloMichi)
+        h2.appendChild(h2Text);
+        Section.appendChild(h2);*/
+        
 
-        const resptFAV = 
-
+        //const dataFAV = await respuesta.json();   
+        
+        actualizarGatos()
         dataFAV.forEach(michi => {
            
             
+            const section = document.getElementById('favorites');
             const article = document.createElement('article');
             const img = document.createElement('img');
             const buttonAdd = document.createElement('button');
             const binText = document.createTextNode('Sacar michi')
-        
-
-            console.log(michi.image.url)
-           buttonAdd.appendChild(binText);
-            buttonAdd.onclick = () => borrarGatitos(michi.id);
             
-            img.src = michi.image.url; 
+            console.log(michi.image.url)
+            buttonAdd.appendChild(binText);
+            buttonAdd.onclick = () => {borrarGatos(michi.id);}
 
             img.src = michi.image.url; 
             img.width = 300;
@@ -94,6 +120,7 @@ async function traerGatitos(apiURL) {
      const botonprimero = document.getElementById("botonprimero");
 
 }
+
 
 function botonGUARDO(iD) {
     console.log("MICHI GUARDADO");
@@ -201,8 +228,3 @@ async function thanosGatitos() {
 }
 
 botonsito.addEventListener("click",traerGatitos(API));
-
-
-
-
-
