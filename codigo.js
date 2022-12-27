@@ -83,7 +83,13 @@ async function favoritosGatitos() {
         const h2 = document.createElement('h2');
         const h2Text = document.createTextNode('Gatos Favoritos');
         //const Section = document.getElementById("favorites");
+        h2.appendChild(h2Text);
 
+        const sectionEncabezadoRandom = document.createElement('section');
+        sectionEncabezadoRandom.setAttribute('class','encabezadoRandom');
+
+        Section.appendChild(sectionEncabezadoRandom)
+        sectionEncabezadoRandom.appendChild(h2);
         
         const sectionFather = document.createElement('section');
         sectionFather.setAttribute('class', "sectionFather")
